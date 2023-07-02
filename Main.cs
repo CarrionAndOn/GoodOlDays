@@ -1,5 +1,8 @@
 ﻿using MelonLoader;
 using BoneLib;
+using BoneLib.BoneMenu.Elements;
+using BoneLib.BoneMenu;
+using UnityEngine;
 
 namespace GoodOlDays
 {
@@ -14,6 +17,21 @@ namespace GoodOlDays
         {
             base.OnInitializeMelon();
             Hooking.OnLevelInitialized += WeAreSoBack;
+            MenuCategory rootCategory = MenuManager.RootCategory;
+            rootCategory.CreateFunctionElement("Toggle BW Text", Color.white, delegate ()
+            {
+                this.ClutterToggled = !this.ClutterToggled;
+                GameObject gameObject = GameObject.Find("ClutterLolCanvas");
+                bool flag = gameObject && this.ClutterToggled;
+                if (flag)
+                {
+                    gameObject.SetActive(true);
+                }
+                else
+                {
+                    gameObject.SetActive(false);
+                }
+            });
         }
         public void WeAreSoBack(LevelInfo levelInfo)
         {
@@ -38,5 +56,6 @@ namespace GoodOlDays
         {
             base.OnLateUpdate();
         }
+        private bool ClutterToggled = true;
     }
 }
