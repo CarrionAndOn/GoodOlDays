@@ -1,12 +1,12 @@
-﻿namespace bonelab_template
+﻿namespace GoodOlDays
 {
     internal partial class Main
     {
-        internal const string Name = "Mod Name";
-        internal const string Description = "Mod Description";
-        internal const string Author = "Mod Author";
-        internal const string Company = "Mod Company";
+        internal const string Name = "GoodOlDays";
+        internal const string Description = "Brings back the old BW mod warnings.";
+        internal const string Author = "CarrionAndOn";
+        internal const string Company = "null";
         internal const string Version = "0.0.1";
-        internal const string DownloadLink = "Link";
+        internal const string DownloadLink = "null";
     }
 }

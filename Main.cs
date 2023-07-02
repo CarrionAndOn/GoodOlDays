@@ -1,6 +1,7 @@
 ﻿using MelonLoader;
+using BoneLib;
 
-namespace bonelab_template
+namespace GoodOlDays
 {
     internal partial class Main : MelonMod
     {
@@ -12,8 +13,12 @@ namespace bonelab_template
         public override void OnInitializeMelon()
         {
             base.OnInitializeMelon();
+            Hooking.OnLevelInitialized += WeAreSoBack;
         }
-
+        public void WeAreSoBack(LevelInfo levelInfo)
+        {
+            WarningText.ClutterYourScreen();
+        }
         public override void OnLateInitializeMelon()
         {
             base.OnLateInitializeMelon();
