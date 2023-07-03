@@ -1,6 +1,5 @@
 ﻿using MelonLoader;
 using BoneLib;
-using BoneLib.BoneMenu.Elements;
 using BoneLib.BoneMenu;
 using UnityEngine;
 

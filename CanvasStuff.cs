@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using BWModding;
+using BoneMenuStuff;
 
 namespace GoodOlDays
 {

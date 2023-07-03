@@ -1,7 +1,7 @@
 ﻿using BoneLib.BoneMenu.Elements;
 using UnityEngine;
 
-namespace BWModding
+namespace BoneMenuStuff
 {
     internal class BoneMenu
     {
