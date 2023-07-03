@@ -14,7 +14,7 @@ namespace GoodOlDays
             // Create a hook to detect when the level has fully loaded.
             Hooking.OnLevelInitialized += OnLevelLoad;
             // Generate BoneMenu stuff
-            BWModding.BoneMenu.CreateBoneMenu(MenuManager.CreateCategory("BW Mod Text", Color.yellow));
+            BoneMenuStuff.BoneMenu.CreateBoneMenu(MenuManager.CreateCategory("BW Mod Text", Color.yellow));
         }
         public void OnLevelLoad(LevelInfo levelInfo)
         {
