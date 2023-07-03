@@ -17,6 +17,7 @@ namespace GoodOlDays
         private static Canvas CreateCanvas()
         {
             GameObject canvasGO = new GameObject("ClutterLolCanvas");
+            Main.spawnedCanvas = canvasGO;
             Canvas canvas = canvasGO.AddComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
 
@@ -41,6 +42,7 @@ namespace GoodOlDays
             tmpro.fontSize = fontSize;
             tmpro.overflowMode = TextOverflowModes.Overflow;
             tmpro.enableWordWrapping = false;
+
         }
     }
 }
