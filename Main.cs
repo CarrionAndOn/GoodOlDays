@@ -9,31 +9,18 @@ namespace GoodOlDays
     internal partial class Main : MelonMod
     {
 
-        public static GameObject spawnedCanvas;
-
         public override void OnInitializeMelon()
         {
             base.OnInitializeMelon();
-            Hooking.OnLevelInitialized += WeAreSoBack;
-            MenuCategory rootCategory = MenuManager.RootCategory;
-            rootCategory.CreateFunctionElement("Toggle BW Text", Color.yellow, delegate ()
-            {
-                ClutterToggled = !ClutterToggled;
-                if (spawnedCanvas)
-                {
-                    spawnedCanvas.SetActive(ClutterToggled);
-                }
-            });
+            // Create a hook to detect when the level has fully loaded.
+            Hooking.OnLevelInitialized += OnLevelLoad;
+            // Generate BoneMenu stuff
+            BWModding.BoneMenu.CreateBoneMenu(MenuManager.CreateCategory("BW Mod Text", Color.yellow));
         }
-        public void WeAreSoBack(LevelInfo levelInfo)
+        public void OnLevelLoad(LevelInfo levelInfo)
         {
-            WarningText.ClutterYourScreen();
+            // Start all the canvas spawning shit.
+            BWMod.SpawnCanvas();
         }
-
-        public override void OnLateUpdate()
-        {
-            base.OnLateUpdate();
-        }
-        private bool ClutterToggled = true;
     }
 }
