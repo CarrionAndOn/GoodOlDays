@@ -1,58 +1,33 @@
-﻿using BoneLib.BoneMenu.Elements;
-using UnityEngine;
+﻿namespace GoodOlDays;
 
-namespace BoneMenuStuff
+internal static class BoneMenu
 {
-    internal class BoneMenu
+    public static GameObject CustomItemsText;
+    public static GameObject PlayerModelText;
+    public static void Setup()
     {
-        // Create all our variables
-        private static bool AllToggled = true;
-        private static bool PMToggled = true;
-        private static bool CIToggled = true;
-        public static GameObject spawnedCanvas;
-        public static GameObject playerModelText;
-        public static GameObject customItemsText;
-        public static void CreateBoneMenu(MenuCategory rootCategory)
-        {
-            // Create toggle all bonemenu button
-            rootCategory.CreateFunctionElement(
-                "Toggle All",
-                Color.white,
-                () =>
-                {
-                    AllToggled = !AllToggled;
-                    if (spawnedCanvas)
-                    {
-                        spawnedCanvas.SetActive(AllToggled);
-                    }
-                }
-            );
-            // Create toggle PMs bonemenu button
-            rootCategory.CreateFunctionElement(
-                "Toggle Player Models",
-                Color.yellow,
-                () =>
-                {
-                    PMToggled = !PMToggled;
-                    if (playerModelText)
-                    {
-                        playerModelText.SetActive(PMToggled);
-                    }
-                }
-            );
-            // Create toggle CIs bonemenu button
-            rootCategory.CreateFunctionElement(
-                "Toggle Custom Items",
-                Color.red,
-                () =>
-                {
-                    CIToggled = !CIToggled;
-                    if (customItemsText)
-                    {
-                        customItemsText.SetActive(CIToggled);
-                    }
-                }
-            );
-        }
+        MenuCategory mainCat = MenuManager.CreateCategory("Weather Electric", "#6FBDFF");
+        MenuCategory menuCategory = mainCat.CreateCategory("GoodOlDays", "#e2b203");
+        menuCategory.CreateFunctionElement("Toggle All", Color.white, ToggleCanvas);
+        menuCategory.CreateFunctionElement("Toggle Custom Items Text", Color.red, ToggleCustomItemsText);
+        menuCategory.CreateFunctionElement("Toggle Player Model Text", Color.yellow, TogglePlayerModelText);
+        SubPanelElement subPanelElement = menuCategory.CreateSubPanel("Settings", "#B0B0B0");
+        subPanelElement.CreateBoolPreference("Auto Enable", Color.white, Preferences.AutoEnable, Preferences.OwnCategory);
+    }
+
+    private static void ToggleCanvas()
+    {
+        ToggleCustomItemsText();
+        TogglePlayerModelText();
+    }
+
+    private static void ToggleCustomItemsText()
+    {
+        CustomItemsText.SetActive(!CustomItemsText.activeSelf);
+    }
+
+    private static void TogglePlayerModelText()
+    {
+        PlayerModelText.SetActive(!PlayerModelText.activeSelf);
     }
 }

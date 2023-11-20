@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -37,9 +38,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BuildInfo.cs" />
-    <Compile Include="CanvasStuff.cs" />
+    <Compile Include="CanvasManager.cs" />
     <Compile Include="BoneMenu.cs" />
+    <Compile Include="GlobalUsings.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="Melon\BoneMenuExtensions.cs" />
+    <Compile Include="Melon\ModConsole.cs" />
+    <Compile Include="Melon\Preferences.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

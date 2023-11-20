@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using GoodOlDays;
-using MelonLoader;
 
 [assembly: AssemblyTitle(GoodOlDays.Main.Description)]
 [assembly: AssemblyDescription(GoodOlDays.Main.Description)]

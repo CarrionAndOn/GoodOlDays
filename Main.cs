@@ -1,25 +1,19 @@
-﻿using MelonLoader;
-using BoneLib;
-using BoneLib.BoneMenu;
-using UnityEngine;
+﻿namespace GoodOlDays;
 
-namespace GoodOlDays
+internal partial class Main : MelonMod
 {
-    internal partial class Main : MelonMod
+    public override void OnInitializeMelon()
     {
+        ModConsole.Setup(LoggerInstance);
+        Preferences.Setup();
+        BoneMenu.Setup();
+        Hooking.OnLevelInitialized += OnLevelLoad;
+    }
 
-        public override void OnInitializeMelon()
-        {
-            base.OnInitializeMelon();
-            // Create a hook to detect when the level has fully loaded.
-            Hooking.OnLevelInitialized += OnLevelLoad;
-            // Generate BoneMenu stuff
-            BoneMenuStuff.BoneMenu.CreateBoneMenu(MenuManager.CreateCategory("BW Mod Text", Color.yellow));
-        }
-        public void OnLevelLoad(LevelInfo levelInfo)
-        {
-            // Start all the canvas spawning shit.
-            BWMod.SpawnCanvas();
-        }
+    private static void OnLevelLoad(LevelInfo levelInfo)
+    {
+        if (!Preferences.AutoEnable.Value) return;
+        ModConsole.Msg("Spawning canvas", 1);
+        CanvasManager.SpawnCanvas();
     }
 }
